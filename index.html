@@ -1,0 +1,1626 @@
+
+<!DOCTYPE html>
+<html class='v2' dir='ltr' lang='vi' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr' xmlns:og='http://ogp.me/ns#'>
+<head>
+<script src="/cdn-cgi/apps/head/PFgYWNfNyolZDmC6iPlz7Pn5gP8.js"></script><link href='https://www.blogger.com/static/v1/widgets/3597120983-css_bundle_v2.css' rel='stylesheet' type='text/css'/>
+<script type='text/rocketscript'>
+	/**
+
+
+
+
+		Contact me via me[a]duyet.net
+		Looking for a job in Data Engineer, NLP!
+
+
+	**/
+	</script>
+<script type='application/ld+json'>
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Đông",
+  "alternateName": "Tôi là Đông",
+  "url": "https://blog.duyet.net"
+}
+</script>
+<script type='application/ld+json'>
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "url": "https://duyet.net",
+  "logo": "https://me.duyet.net/assets/images/duyet_logo.jpg",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "technical support",
+      "contactOption": "TollFree",
+	  "url": "https://duyet.net",
+      "areaServed": [ "VN" ],
+      "availableLanguage": [ "Vietnamese" ]
+    }
+   ],
+   "sameAs" : [
+    "https://twitter.com/duyetdev",
+    "https://github.com/duyetdev"
+ 	]
+}
+</script>
+<script type='application/ld+json'>
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "itemListElement":[
+
+  
+
+  ]
+}
+</script>
+<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>
+<meta charset='UTF-8'/>
+<meta content='True' name='HandheldFriendly'/>
+<meta content='320' name='MobileOptimized'/>
+<meta content='initial-scale=1.0,width=device-width,minimum-scale=1.0,maximum-scale=10.0' name='viewport'/>
+<meta content='on' http-equiv='cleartype'/>
+<meta content='duyet.net' name='apple-mobile-web-app-title'/>
+<meta content='NOYDIR,NOODP' name='robots'/>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+	var require = ['duyetdev_tracker', 'bgate_ad', 'rocket', 'fast_backlink', 'supper_seo', 'firewall_x', 'duyetdev_anti_ddos', 'xss_filter', 'cloudflare_custom', 'my_ip', 'ip_logger', 'event_tracker', 'duyetdev_rest_query'];
+</script>
+<title>Docker là gì? Cơ bản về Docker</title>
+<meta content='110282796594070106735' name='listnr-verify'/>
+<link href='//me.duyet.net/assets/images/7mau.jpg' rel='icon' type='image/x-icon'/>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<meta content='blogger' name='generator'/>
+<link href="https://blog.duyet.net/favicon.ico" rel='icon' type='image/x-icon' />
+<link href="https://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html" rel='canonical' />
+<link rel="alternate" type="application/atom+xml" title="Tôi là Đông - Atom" href="https://blog.duyet.net/feeds/posts/default" />
+<link rel="alternate" type="application/rss+xml" title="Tôi là Đông - RSS" href="https://blog.duyet.net/feeds/posts/default?alt=rss" />
+<link rel="service.post" type="application/atom+xml" title="Tôi là Đông - Atom" href="https://www.blogger.com/feeds/3454518094181460838/posts/default" />
+
+<link rel="alternate" type="application/atom+xml" title="Tôi là Đông
+ - Atom" href="https://blog.duyet.net/feeds/3324245740616192311/comments/default" />
+<!--[if IE]><script type="text/javascript" src="https://www.blogger.com/static/v1/jsbin/1961721879-ieretrofit.js"></script>
+<![endif]-->
+<link href='https://4.bp.blogspot.com/-_yUdu_nrol8/VnZeC8EMsdI/AAAAAAAAMG0/Qiij482W6lg/s1600/product%2B-%2Bengine.png' rel='image_src'/>
+<meta content='http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html' property='og:url'/>
+<meta content='Docker là gì? Cơ bản về Docker' property='og:title'/>
+<meta content='I am Data Engineer, Big Data Engineer. Write about latest techniques, Data Engineer, Machine Learning and Web.' property='og:description'/>
+<meta content='https://4.bp.blogspot.com/-_yUdu_nrol8/VnZeC8EMsdI/AAAAAAAAMG0/Qiij482W6lg/w1200-h630-p-k-no-nu/product%2B-%2Bengine.png' property='og:image'/>
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<meta content='22697D8D1E179844B84D3391A59B6D08' name='msvalidate.01'/>
+<meta content='duyetdev, machine learning, data engineer, duyet, nodejs, meanjs, backbonejs, Angular, Big Data, Spark, PySpark' name='keyword'/>
+<meta content='7e12bbab27d21244b4aa087687dc684b' name='p:domain_verify'/>
+<meta content='I am a Data Engineer' property='og:description'/>
+<meta content='duyet.net' name='application-name'/>
+<meta content='width=device-width;height=device-height' name='msapplication-window'/>
+<meta content='Tôi là Đông' name='msapplication-tooltip'/>
+<meta content='name=Subscribe;action-uri=https://blog.duyet.net/feeds/posts/default;icon-uri=' name='msapplication-task'/>
+<!-- Begin Open Graph metadata -->
+<meta content='article' property='og:type'/>
+<meta content='Tôi là Đông' property='og:site_name'/>
+<meta content='Docker là gì? Cơ bản về Docker' property='og:title'/>
+<meta content='https://4.bp.blogspot.com/-_yUdu_nrol8/VnZeC8EMsdI/AAAAAAAAMG0/Qiij482W6lg/s72-c/product%2B-%2Bengine.png' property='og:image'/>
+<meta content='vi_VN' property='og:locale'/>
+<meta content='http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html' property='og:url'/>
+<!-- End Open Graph metadata -->
+<meta content='1394054914200945' property='fb:app_id'/>
+<meta content='100002067771491' property='fb:admins'/>
+<style id='page-skin-1' type='text/css'><!--
+/* Variable definitions
+====================
+<Variable name="keycolor" description="Main Color" type="color" default="#66bbdd"/>
+<Group description="Page Text" selector="body">
+<Variable name="body.font" description="Font" type="font"
+default="normal normal 12px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+<Variable name="body.text.color" description="Text Color" type="color" default="#222222"/>
+</Group>
+<Group description="Backgrounds" selector=".body-fauxcolumns-outer">
+<Variable name="body.background.color" description="Outer Background" type="color" default="#66bbdd"/>
+<Variable name="content.background.color" description="Main Background" type="color" default="#ffffff"/>
+<Variable name="header.background.color" description="Header Background" type="color" default="transparent"/>
+</Group>
+<Group description="Links" selector=".main-outer">
+<Variable name="link.color" description="Link Color" type="color" default="#2288bb"/>
+<Variable name="link.visited.color" description="Visited Color" type="color" default="#888888"/>
+<Variable name="link.hover.color" description="Hover Color" type="color" default="#33aaff"/>
+</Group>
+<Group description="Blog Title" selector=".header h1">
+<Variable name="header.font" description="Font" type="font"
+default="normal normal 60px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+<Variable name="header.text.color" description="Title Color" type="color" default="#3399bb" />
+</Group>
+<Group description="Blog Description" selector=".header .description">
+<Variable name="description.text.color" description="Description Color" type="color"
+default="#777777" />
+</Group>
+<Group description="Tabs Text" selector=".tabs-inner .widget li a">
+<Variable name="tabs.font" description="Font" type="font"
+default="normal normal 14px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+<Variable name="tabs.text.color" description="Text Color" type="color" default="#999999"/>
+<Variable name="tabs.selected.text.color" description="Selected Color" type="color" default="#000000"/>
+</Group>
+<Group description="Tabs Background" selector=".tabs-outer .PageList">
+<Variable name="tabs.background.color" description="Background Color" type="color" default="#f5f5f5"/>
+<Variable name="tabs.selected.background.color" description="Selected Color" type="color" default="#eeeeee"/>
+</Group>
+<Group description="Post Title" selector="h3.post-title, .comments h4">
+<Variable name="post.title.font" description="Font" type="font"
+default="normal normal 22px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+</Group>
+<Group description="Date Header" selector=".date-header">
+<Variable name="date.header.color" description="Text Color" type="color"
+default="#666666"/>
+<Variable name="date.header.background.color" description="Background Color" type="color"
+default="transparent"/>
+</Group>
+<Group description="Post Footer" selector=".post-footer">
+<Variable name="post.footer.text.color" description="Text Color" type="color" default="#666666"/>
+<Variable name="post.footer.background.color" description="Background Color" type="color"
+default="#f9f9f9"/>
+<Variable name="post.footer.border.color" description="Shadow Color" type="color" default="#eeeeee"/>
+</Group>
+<Group description="Gadgets" selector="h2">
+<Variable name="widget.title.font" description="Title Font" type="font"
+default="normal bold 11px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+<Variable name="widget.title.text.color" description="Title Color" type="color" default="#000000"/>
+<Variable name="widget.alternate.text.color" description="Alternate Color" type="color" default="#999999"/>
+</Group>
+<Group description="Images" selector=".main-inner">
+<Variable name="image.background.color" description="Background Color" type="color" default="#ffffff"/>
+<Variable name="image.border.color" description="Border Color" type="color" default="#eeeeee"/>
+<Variable name="image.text.color" description="Caption Text Color" type="color" default="#666666"/>
+</Group>
+<Group description="Accents" selector=".content-inner">
+<Variable name="body.rule.color" description="Separator Line Color" type="color" default="#eeeeee"/>
+<Variable name="tabs.border.color" description="Tabs Border Color" type="color" default="transparent"/>
+</Group>
+<Variable name="body.background" description="Body Background" type="background"
+color="#ffffff" default="$(color) none repeat scroll top left"/>
+<Variable name="body.background.override" description="Body Background Override" type="string" default=""/>
+<Variable name="body.background.gradient.cap" description="Body Gradient Cap" type="url"
+default="url(//www.blogblog.com/1kt/simple/gradients_light.png)"/>
+<Variable name="body.background.gradient.tile" description="Body Gradient Tile" type="url"
+default="url(//www.blogblog.com/1kt/simple/body_gradient_tile_light.png)"/>
+<Variable name="content.background.color.selector" description="Content Background Color Selector" type="string" default=".content-inner"/>
+<Variable name="content.padding" description="Content Padding" type="length" default="10px"/>
+<Variable name="content.padding.horizontal" description="Content Horizontal Padding" type="length" default="10px"/>
+<Variable name="content.shadow.spread" description="Content Shadow Spread" type="length" default="40px"/>
+<Variable name="content.shadow.spread.webkit" description="Content Shadow Spread (WebKit)" type="length" default="5px"/>
+<Variable name="content.shadow.spread.ie" description="Content Shadow Spread (IE)" type="length" default="10px"/>
+<Variable name="main.border.width" description="Main Border Width" type="length" default="0"/>
+<Variable name="header.background.gradient" description="Header Gradient" type="url" default="none"/>
+<Variable name="header.shadow.offset.left" description="Header Shadow Offset Left" type="length" default="-1px"/>
+<Variable name="header.shadow.offset.top" description="Header Shadow Offset Top" type="length" default="-1px"/>
+<Variable name="header.shadow.spread" description="Header Shadow Spread" type="length" default="1px"/>
+<Variable name="header.padding" description="Header Padding" type="length" default="30px"/>
+<Variable name="header.border.size" description="Header Border Size" type="length" default="1px"/>
+<Variable name="header.bottom.border.size" description="Header Bottom Border Size" type="length" default="1px"/>
+<Variable name="header.border.horizontalsize" description="Header Horizontal Border Size" type="length" default="0"/>
+<Variable name="description.text.size" description="Description Text Size" type="string" default="140%"/>
+<Variable name="tabs.margin.top" description="Tabs Margin Top" type="length" default="0" />
+<Variable name="tabs.margin.side" description="Tabs Side Margin" type="length" default="30px" />
+<Variable name="tabs.background.gradient" description="Tabs Background Gradient" type="url"
+default="url(//www.blogblog.com/1kt/simple/gradients_light.png)"/>
+<Variable name="tabs.border.width" description="Tabs Border Width" type="length" default="1px"/>
+<Variable name="tabs.bevel.border.width" description="Tabs Bevel Border Width" type="length" default="1px"/>
+<Variable name="date.header.padding" description="Date Header Padding" type="string" default="inherit"/>
+<Variable name="date.header.letterspacing" description="Date Header Letter Spacing" type="string" default="inherit"/>
+<Variable name="date.header.margin" description="Date Header Margin" type="string" default="inherit"/>
+<Variable name="post.margin.bottom" description="Post Bottom Margin" type="length" default="25px"/>
+<Variable name="image.border.small.size" description="Image Border Small Size" type="length" default="2px"/>
+<Variable name="image.border.large.size" description="Image Border Large Size" type="length" default="5px"/>
+<Variable name="page.width.selector" description="Page Width Selector" type="string" default=".region-inner"/>
+<Variable name="page.width" description="Page Width" type="string" default="auto"/>
+<Variable name="main.section.margin" description="Main Section Margin" type="length" default="15px"/>
+<Variable name="main.padding" description="Main Padding" type="length" default="15px"/>
+<Variable name="main.padding.top" description="Main Padding Top" type="length" default="30px"/>
+<Variable name="main.padding.bottom" description="Main Padding Bottom" type="length" default="30px"/>
+<Variable name="paging.background"
+color="#ffffff"
+description="Background of blog paging area" type="background"
+default="transparent none no-repeat scroll top center"/>
+<Variable name="footer.bevel" description="Bevel border length of footer" type="length" default="0"/>
+<Variable name="mobile.background.overlay" description="Mobile Background Overlay" type="string"
+default="transparent none repeat scroll top left"/>
+<Variable name="mobile.background.size" description="Mobile Background Size" type="string" default="auto"/>
+<Variable name="mobile.button.color" description="Mobile Button Color" type="color" default="#ffffff" />
+<Variable name="startSide" description="Side where text starts in blog language" type="automatic" default="left"/>
+<Variable name="endSide" description="Side where text ends in blog language" type="automatic" default="right"/>
+*/
+/* Content
+----------------------------------------------- */
+::selection {
+background-color: #ff5722;
+color : white;
+text-shadow: none;
+}
+::-moz-selection {
+background-color: #ff5722;
+color: white;
+text-shadow: none;
+}
+.container {
+padding-left: 0 !important;
+padding-right: 0 !important;
+}
+a {
+color: #12314D;
+}
+a:link {
+text-decoration:none;
+color: #12314D;
+}
+a:visited {
+text-decoration:none;
+}
+a:hover {
+text-decoration:underline;
+color: #33aaff;
+}
+.body-fauxcolumn-outer .fauxcolumn-inner {
+background: transparent none repeat scroll top left;
+_background-image: none;
+}
+.body-fauxcolumn-outer .cap-top {
+position: absolute;
+z-index: 1;
+height: 400px;
+width: 100%;
+background: #ffffff none repeat scroll top left;
+}
+.body-fauxcolumn-outer .cap-top .cap-left {
+width: 100%;
+background: transparent none repeat-x scroll top left;
+_background-image: none;
+}
+.content-outer {
+-moz-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 0 0 #333333;
+box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+margin-bottom: 1px;
+}
+.content-inner {
+padding: 0;
+}
+.content-inner {
+background-color: #ffffff;
+}
+/* Header
+----------------------------------------------- */
+.header-outer {
+background: transparent none repeat-x scroll 0 -400px;
+_background-image: none;
+}
+.Header h1 {
+color: #000000;
+text-shadow: 0 0 0 rgba(0, 0, 0, .2);
+text-align: center;
+font-family: sans-serif;
+}
+.Header h1 span, .Header h1 span a {
+color: #0099ff;
+padding: 5px;
+font-family: fantasy, 'Metrophobic';
+font-size: 120px;
+text-transform: uppercase;
+line-height: 1.0;
+}
+@media (max-width: 1000px) {
+.Header h1 span, .Header h1 span a {
+font-size: 90px;
+}
+}
+@media (max-width: 750px) {
+.Header h1 span, .Header h1 span a {
+font-size: 75px;
+}
+}
+@media (max-width: 650px) {
+.Header h1 span, .Header h1 span a {
+font-size: 55px;
+}
+}
+@media (max-width: 350px) {
+.Header h1 span, .Header h1 span a {
+font-size: 45px;
+}
+}
+@media (max-width: 250px) {
+.Header h1 {
+font-size: 48px;
+}
+}
+.Header h1 a {
+color: #000000;
+}
+.Header .description {
+font-size: 18px;
+color: #000000;
+}
+.header-inner .Header .titlewrapper {
+/**padding: 22px 0;**/
+margin-bottom-width:1px;
+margin-bottom-style: dotted;
+}
+.header-inner .Header .descriptionwrapper {
+padding: 0 0;
+}
+/* Tabs
+----------------------------------------------- */
+.tabs-inner .section:first-child {
+border-top: 0 solid #dddddd;
+}
+.tabs-inner .section:first-child ul {
+margin-top: -1px;
+border-top: 1px solid #dddddd;
+border-left: 1px solid #dddddd;
+border-right: 1px solid #dddddd;
+}
+.tabs-inner .widget ul {
+background: transparent none repeat-x scroll 0 -800px;
+_background-image: none;
+border-bottom: 1px solid #dddddd;
+margin-top: 0;
+margin-left: -30px;
+margin-right: -30px;
+}
+.tabs-inner .widget li a {
+display: inline-block;
+padding: .6em 1em;
+font: normal normal 12px 'Trebuchet MS', Trebuchet, Verdana, sans-serif;
+color: #000000;
+border-left: 1px solid #ffffff;
+border-right: 1px solid #dddddd;
+}
+.tabs-inner .widget li:first-child a {
+border-left: none;
+}
+.tabs-inner .widget li.selected a, .tabs-inner .widget li a:hover {
+color: #000000;
+background-color: #eeeeee;
+text-decoration: none;
+}
+/* Widgets
+----------------------------------------------- */
+.widget .zippy {
+color: #999999;
+text-shadow: 2px 2px 1px rgba(0, 0, 0, .1);
+}
+.widget .popular-posts ul {
+list-style: none;
+}
+/* Posts
+----------------------------------------------- */
+.date-header span {
+background-color: #bbbbbb;
+color: #ffffff;
+padding: 0.4em;
+letter-spacing: 3px;
+margin: inherit;
+}
+.main-inner {
+padding-top: 35px;
+padding-bottom: 65px;
+}
+.main-inner .column-center-inner {
+padding: 0 0;
+}
+.main-inner .column-center-inner .section {
+margin: 0 1em;
+}
+.post {
+margin: 0 0 45px 0;
+}
+h3.post-title, .comments h4 {
+margin: 0;
+font-size: 27px;
+transition-duration: 3s;
+-webkit-transition-duration: 3s;
+}
+h3.post-title, .comments h3 a {
+color: #222 !important;
+font-size: 1.7em;
+/* border-bottom: 1px solid #DFE2E1; */
+/* padding-bottom: 7px; */
+/* font-family: 'Helvetica Neue Condensed','Helvetica','Arial',sans-serif; */
+font-weight: 400;
+text-rendering: optimizeLegibility;
+}
+h3.post-title a {
+color: #222 !important;
+box-shadow: inset 0 -3px 0 #fc0;
+padding-bottom: 5px;
+text-decoration: none;
+padding: 6px 0;
+}
+h3.post-title a:hover {
+color: #222 !important;
+box-shadow: none;
+background: #fc0;
+}
+.post-body {
+font-size: 110%;
+line-height: 1.4;
+position: relative;
+}
+.post-outer {
+/* font-family: "Lato",sans-serif; */
+font: normal normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+font-weight: 400;
+}
+.post-body img, .post-body .tr-caption-container, .Profile img, .Image img,
+.BlogList .item-thumbnail img {
+padding: 2px;
+background: #ffffff;
+/* border: 1px solid #eeeeee; */
+border:0;
+/*
+-moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+*/
+}
+.post-body img, .post-body .tr-caption-container {
+padding: 5px;
+}
+.post-body .tr-caption-container {
+color: #666666;
+}
+.post-body .tr-caption-container img {
+padding: 0;
+background: transparent;
+border: none;
+-moz-box-shadow: 0 0 0 rgba(0, 0, 0, .1);
+-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .1);
+box-shadow: 0 0 0 rgba(0, 0, 0, .1);
+width: auto;
+}
+@media (max-width: 400px) {
+body img {
+width: auto;
+}}
+.post-header {
+margin: 0 0 1.5em;
+line-height: 1.6;
+font-size: 90%;
+}
+.post-footer {
+margin: 20px -2px 0;
+padding: 5px 10px;
+color: #666666;
+background-color: #eeeeee;
+border-bottom: 1px solid #eeeeee;
+line-height: 1.6;
+font-size: 90%;
+}
+#comments .comment-author {
+padding-top: 1.5em;
+border-top: 1px solid transparent;
+background-position: 0 1.5em;
+}
+#comments .comment-author:first-child {
+padding-top: 0;
+border-top: none;
+}
+.avatar-image-container {
+margin: .2em 0 0;
+}
+#comments .avatar-image-container img {
+border: 1px solid #eeeeee;
+}
+footer {
+border-top-width: 1px;
+border-top-style: outset;
+padding: 15px;
+text-align: center;
+font-size: 0.8em;
+}
+/* Comments
+----------------------------------------------- */
+.comments .comments-content .icon.blog-author {
+background-repeat: no-repeat;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB9sLFwMeCjjhcOMAAAD+SURBVDjLtZSvTgNBEIe/WRRnm3U8RC1neQdsm1zSBIU9VVF1FkUguQQsD9ITmD7ECZIJSE4OZo9stoVjC/zc7ky+zH9hXwVwDpTAWWLrgS3QAe8AZgaAJI5zYAmc8r0G4AHYHQKVwII8PZrZFsBFkeRCABYiMh9BRUhnSkPTNCtVXYXURi1FpBDgArj8QU1eVXUzfnjv7yP7kwu1mYrkWlU33vs1QNu2qU8pwN0UpKoqokjWwCztrMuBhEhmh8bD5UDqur75asbcX0BGUB9/HAMB+r32hznJgXy2v0sGLBcyAJ1EK3LFcbo1s91JeLwAbwGYu7TP/3ZGfnXYPgAVNngtqatUNgAAAABJRU5ErkJggg==);
+}
+.comments .comments-content .loadmore a {
+border-top: 1px solid #999999;
+border-bottom: 1px solid #999999;
+}
+.comments .comment-thread.inline-thread {
+background-color: #eeeeee;
+}
+.comments .continue {
+border-top: 2px solid #999999;
+}
+/* Accents
+---------------------------------------------- */
+.section-columns td.columns-cell {
+border-left: 1px solid transparent;
+}
+.blog-pager {
+}
+.blog-pager-older-link, .home-link,
+.blog-pager-newer-link {
+background-color: #ffffff;
+padding: 5px;
+}
+.footer-outer {
+border-top: 1px dashed #bbbbbb;
+}
+/* Mobile
+----------------------------------------------- */
+body.mobile  {
+background-size: auto;
+}
+.mobile .body-fauxcolumn-outer {
+background: transparent none repeat scroll top left;
+}
+.mobile .body-fauxcolumn-outer .cap-top {
+background-size: 100% auto;
+}
+.mobile .content-outer {
+-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+}
+body.mobile .AdSense {
+margin: 0 -0;
+}
+.mobile .tabs-inner .widget ul {
+margin-left: 0;
+margin-right: 0;
+}
+.mobile .post {
+margin: 0;
+}
+.mobile .main-inner .column-center-inner .section {
+margin: 0;
+}
+.mobile .date-header span {
+padding: 0.1em 10px;
+margin: 0 -10px;
+}
+.mobile h3.post-title {
+margin: 0;
+}
+.mobile .blog-pager {
+background: transparent none no-repeat scroll top center;
+}
+.mobile .footer-outer {
+border-top: none;
+}
+.mobile .main-inner, .mobile .footer-inner {
+background-color: #ffffff;
+}
+.mobile-index-contents {
+color: #666666;
+}
+.mobile-link-button {
+background-color: #2288bb;
+}
+.mobile-link-button a:link, .mobile-link-button a:visited {
+color: #ffffff;
+}
+.mobile .tabs-inner .section:first-child {
+border-top: none;
+}
+.mobile .tabs-inner .PageList .widget-content {
+background-color: #eeeeee;
+color: #000000;
+border-top: 1px solid #dddddd;
+border-bottom: 1px solid #dddddd;
+}
+.mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
+border-left: 1px solid #dddddd;
+}
+
+--></style>
+<style id='template-skin-1' type='text/css'><!--
+body {
+font: $(body.font);
+}
+.content-outer, .content-fauxcolumn-outer, .region-inner {
+_width: 960px;
+}
+.main-inner .columns {
+padding-left: 0;
+padding-right: 0;
+}
+.main-inner .fauxcolumn-center-outer {
+left: 0;
+right: 310px;
+/* IE6 does not respect left and right together */
+_width: expression(this.parentNode.offsetWidth -
+parseInt("0") -
+parseInt("310px") + 'px');
+}
+.main-inner .fauxcolumn-left-outer {
+width: 0;
+}
+.main-inner .fauxcolumn-right-outer {
+width: 310px;
+}
+.main-inner .column-left-outer {
+width: 0;
+right: 100%;
+margin-left: -0;
+}
+.main-inner .column-right-outer {
+width: 310px;
+margin-right: -310px;
+}
+#layout {
+min-width: 0;
+}
+#layout .content-outer {
+min-width: 0;
+width: 800px;
+}
+#layout .region-inner {
+min-width: 0;
+width: auto;
+}
+--></style>
+<link crossorigin='anonymous' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' rel='stylesheet'/>
+<style>pre.prettyprint {padding: 20px!important;}</style>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'/>
+<style>
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+ }
+}
+  img { max-width: 100% !important; } 
+  h2 { color: #454040; } 
+  .post-body h2 { font-size: 26px;     color: #00838f; }
+  
+ .post-body > a, .post-body > b > a, .post-body > ul a, .post-body > ol a  {
+    color: #101010;
+    box-shadow: inset 0 -2px 0 #00BAFF;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    padding-bottom: 1px;
+	text-decoration: none;
+  }
+
+  .post-body > a:hover, .post-body > b > a:hover, .post-body > ul a:hover {
+   color: #0094CC;
+box-shadow:none;
+   }
+
+  a { color: #12314D}
+
+#social-companies {
+    color: #35393b;
+    text-align: center;
+    vertical-align: middle;
+    padding: 35px 0 6px 0;
+    margin: 0;
+    font-family: 'Open Sans', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	/* background: no-repeat #fff calc(100% + 668px) calc(100% + 21px) url('https://get.google.com/tagassistant/images/mosaic.png'); */
+	/* background: no-repeat #fff calc(100% + 0px) calc(100% + 17px) url('https://1.bp.blogspot.com/-5c5PDPgtNHM/WIX_xeQ0HaI/AAAAAAAAig4/_fHXU6yX-OIXJThcE1Ka1dgAiazaGHIaACK4B/s400/tet2017_2.png'); */
+}
+
+#social-companies a { text-decoration: none; }
+
+section { margin: 0 auto; padding: 0 20px 0 20px; }
+
+h1 {
+    font-size: 42px;
+    font-weight: 200;
+    color: #000;
+}
+
+#social-companies h1 {
+    margin: 0 0 0px 0;
+    color: #003e54;
+    font-size: 43px;
+    font-weight: 300;
+}
+
+#social-companies h1 .title_text {
+	box-shadow: inset 0 -8px 0 #fc0;
+	-webkit-box-shadow: inset 0 -8px 0 #fc0;
+	-moz-box-shadow: inset 0 -8px 0 #fc0;
+	-o-box-shadow: inset 0 -8px 0 #fc0;
+	-ms-box-shadow: inset 0 -8px 0 #fc0;
+}
+
+
+
+@media (max-width: 645px) {
+    #social-companies h1 {
+        font-size: 35px;
+    }
+
+    #social-companies {
+		background: none;
+	}
+}
+
+@-moz-keyframes blinker {
+    0%,
+    100% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes blinker {
+    0%,
+    100% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0
+    }
+}
+
+@keyframes blinker {
+    0%,
+    100% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0
+    }
+}
+
+  td.tr-caption { font-size: 100% !important; }
+
+.blinker {
+    position: relative;
+}
+
+.blinker::before {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    content: '';
+    width: 2px;
+    height: 30px;
+    margin-top: -15px;
+    background-color: #003E54;
+    animation-name: blinker;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    width: 3px;
+    height: 50px;
+    margin-top: -25px;
+    left: 10px;
+    width: 3px;
+    height: 50px;
+    margin-top: -20px;
+}
+
+.duyetdev-h-ancho {
+    display: inline-block;
+    font-weight: normal;
+    width: 1.5em;
+    margin-left: -1.5em;
+    margin-top: -1em;
+    margin-bottom: -1em;
+    color: #C7C7C7 !important;
+}
+
+.post-body h2:hover .duyetdev-h-ancho {
+    color: #000 !important
+}
+.status-msg-wrap { margin-bottom: 30px; }
+
+/* ============================ Header link top barr */
+
+
+div#header_top_link {
+    margin-top: 34px;
+}
+
+div#header_top_link ul {
+    list-style: none;
+    padding: 0 !important;
+    width: 100%;
+}
+
+div#header_top_link ul li {
+    display: inline-block;
+    font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+    font-size: 15px;
+    margin: 0 10px;
+    padding: 10px 60px;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    background: #03A9F4;
+    color: #FFF;
+    font-size: normal normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+    margin: 0;
+    margin-bottom: 3px;
+    min-width: 110px;
+}
+
+div#header_top_link ul li a {
+    color: #FFF;
+    font-weight: 300;
+}
+
+
+div#header_top_link ul li.js {
+    background: #FFC107;    
+}
+  div#header_top_link ul li.js:hover {
+    background: #FFC107 !important;    
+
+}
+
+
+div#header_top_link ul li.nodejs {
+    background: #4caf50;    
+}
+
+div#header_top_link ul li.nodejs:hover {
+    background: #4caf50 !important;    
+}
+
+
+div#header_top_link ul li.ml {
+    background: #607d8b;    
+}
+
+div#header_top_link ul li.ml:hover {
+    background: #607d8b !important;    
+}
+
+
+@media (max-width: 480px) {
+
+    div#header_top_link {
+        padding: 0 20px;
+    }
+
+    div#header_top_link ul li {
+        width: 100%;
+        padding: auto;
+    }
+
+}
+
+
+@media (max-width: 360px) {
+
+    div#header_top_link {
+        padding: 0 20px;
+    }
+
+    div#header_top_link ul li {
+        width: 100%;
+        padding: auto;
+    }
+
+}
+
+.blog-pager a {
+    display: inline-block;
+    padding: 8px 22px;
+    margin-bottom: 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.42857143;
+    border-bottom: 2px solid #fc0;
+    color: #000;
+}
+
+.blog-pager a:hover {
+    text-decoration: none;
+    background: #fc0;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    -webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+
+
+@import url('https://rsms.me/inter/inter-ui.css');
+html { font-family: 'Inter UI', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter UI var alt', sans-serif; }
+}
+
+
+</style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async='async' src='https://www.googletagmanager.com/gtag/js?id=UA-92451506-3' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92451506-3');
+</script>
+<script src='https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="9a4513a2b3d4f8cc32c588f7-|49"></script><link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=3454518094181460838&amp;zx=f72bd0fb-0e5c-4327-a109-da91ea996913' media='none' onload='if(media!=&#39;all&#39;)media=&#39;all&#39;' rel='stylesheet'/><noscript><link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=3454518094181460838&amp;zx=f72bd0fb-0e5c-4327-a109-da91ea996913' rel='stylesheet'/></noscript>
+
+</head>
+<body class='loading'>
+<div id='fb-root'></div>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1394054914200945";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-TD2NQ7X' style='display:none;visibility:hidden' width='0'></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class='featurette' id='social-companies'>
+<section>
+<div class='row'>
+<div class='col-md-12' id='header-full-height'>
+<a href="https://blog.duyet.net/"><h1><span class='title_text'>Tôi là Đông
+</span></h1></a>
+</div>
+</div>
+</section>
+</div>
+<div class='container'>
+<div class='fauxcolumn-outer body-fauxcolumn-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</div>
+<div class='container'>
+<div class='content-fauxcolumns'>
+<div class='fauxcolumn-outer content-fauxcolumn-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</div>
+<div class='content-outer'>
+<div class='content-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left content-fauxborder-left'>
+<div class='fauxborder-right content-fauxborder-right'></div>
+<div class='content-inner'>
+<header>
+<div class='header-outer'>
+<div class='header-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left header-fauxborder-left'>
+<div class='fauxborder-right header-fauxborder-right'></div>
+<div class='region-inner header-inner'>
+<!-- Header line here -->
+</div>
+</div>
+<div class='header-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</header>
+<div class='tabs-outer'>
+<div class='tabs-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left tabs-fauxborder-left'>
+<div class='fauxborder-right tabs-fauxborder-right'></div>
+<div class='region-inner tabs-inner'>
+<div class='tabs no-items section' id='crosscol'></div>
+<div class='tabs no-items section' id='crosscol-overflow'></div>
+</div>
+</div>
+<div class='tabs-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<div class='main-outer'>
+<div class='main-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left main-fauxborder-left'>
+<div class='fauxborder-right main-fauxborder-right'></div>
+<div class='region-inner main-inner'>
+<div class='columns fauxcolumns'>
+<div class='fauxcolumn-outer fauxcolumn-center-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<div class='fauxcolumn-outer fauxcolumn-left-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<div class='fauxcolumn-outer fauxcolumn-right-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<!-- corrects IE6 width calculation -->
+<div class='columns-inner'>
+<div class='column-center-outer'>
+<div class='column-center-inner'>
+<div class='main section' id='main'><div class='widget Blog' data-version='1' id='Blog1'>
+<div class='blog-posts hfeed container'>
+<!--Can't find substitution for tag [defaultAdStart]-->
+
+          <div class="date-outer">
+        
+
+          <div class="date-posts">
+        
+<div class='post-outer'>
+<div class='post hentry' itemprop='blogPost' itemscope='itemscope' itemtype='https://schema.org/BlogPosting'>
+<div itemprop='image' itemscope='itemscope' itemtype='https://schema.org/ImageObject'>
+<meta content='https://4.bp.blogspot.com/-_yUdu_nrol8/VnZeC8EMsdI/AAAAAAAAMG0/Qiij482W6lg/s1600/product%2B-%2Bengine.png' itemprop='url'/>
+<meta content='800' itemprop='width'/>
+<meta content='800' itemprop='height'/>
+</div>
+<meta content='12/20/2015 02:52:00 PM' itemprop='datePublished'/>
+<meta content='12/20/2015 02:52:00 PM' itemprop='dateModified'/>
+<meta content='Docker là gì? Cơ bản về Docker' itemprop='headline'/>
+<meta content='Duyet Le' itemprop='author'/>
+<div itemprop='publisher' itemscope='itemscope' itemtype='https://schema.org/Organization'>
+<div itemprop='logo' itemscope='itemscope' itemtype='https://schema.org/ImageObject'>
+<meta content='https://me.duyet.net/assets/images/duyet_logo.jpg' itemprop='url'/>
+<meta content='320' itemprop='width'/>
+<meta content='320' itemprop='height'/>
+</div>
+<meta content='Duyet Le' itemprop='name'/>
+</div>
+<meta itemType='https://schema.org/WebPage' itemid='' itemprop='mainEntityOfPage' itemscope='itemscope'/>
+<a name='3324245740616192311'></a>
+<h3 class='post-title entry-title' itemprop='name'>
+Docker là gì? Cơ bản về Docker
+</h3>
+<div class='post-header'>
+<div class='post-header-line-1'></div>
+</div>
+<div class='post-body entry-content' id='post-body-3324245740616192311' itemprop='description articleBody'>
+Trong thời gian gần đây có rất nhiều bài báo, hay blog, và cả trên Twitter có rất nhiều người đề cập đến Docker. Vậy Docker là gì và tại sao nó hữu ích.<br />
+<div>
+<div style="text-align: center;">
+<a href="https://blog.duyetdev.com/2015/12/docker-la-gi-co-ban-ve-docker.html"><img border="0" src="https://4.bp.blogspot.com/-_yUdu_nrol8/VnZeC8EMsdI/AAAAAAAAMG0/Qiij482W6lg/s1600/product%2B-%2Bengine.png" style="border: 0; box-shadow: none;" /></a></div>
+<a name='more'></a><h2>
+Docker là gì?</h2>
+<div>
+<div>
+Docker - đây là một công cụ tạo môi trường được "đóng gói" (còn gọi là Container) trên máy tính mà không làm tác động tới môi trường hiện tại của máy, môi trường trong Docker sẽ chạy độc lập.</div>
+<div>
+Một số developer thường tạo sẵn các môi trường này, và upload lên mạng để mọi người lấy về dùng, và mấy cái này gọi là các Images.<br />
+<div class="">
+</div>
+</div>
+</div>
+<h2>
+Docker và máy ảo?</h2>
+<div>
+Docker là công cụ tạo môi trường đóng gói, nó còn đóng gói cả hệ điều hành trong đó, vậy Docker khác máy ảo chỗ nào?<br />
+<br /></div>
+<table class="table" style="width: 80%px;">
+<tbody>
+<tr>
+<td valign="bottom" width="50%"><img border="0" src="https://4.bp.blogspot.com/-LAeYmjceju4/VnZXDlR9hNI/AAAAAAAAMGk/be31bdghXhM/s1600/what-is-docker-diagram.png" />
+</td>
+
+<td valign="bottom"><img border="0" src="https://1.bp.blogspot.com/-L1MR5K0rxCA/VnZW_3dldeI/AAAAAAAAMGY/c2mwzOvr0W0/s1600/what-is-vm-diagram.png" />
+</td></tr>
+<tr>
+<td><h3>
+Máy ảo</h3>
+Mỗi máy ảo chứa ứng dụng, kèm theo các thư viện và hệ điều hành, mỗi ứng dụng như vậy chiếm hàng chục GBs.</td>
+
+<td><h3>
+Docker
+
+</h3>
+<div>
+Mỗi containers chứa ứng dụng gồm chứa các thư viện riêng, nhưng kernel được chia sẻ với các containers khác. Mỗi kernel được chạy trong các môi trường độc lập với nhau. Docker infrastructure chạy được trên mọi máy tính, đám mây hay nền tảng nào. Vì vậy bạn có thể vận chuyển ứng dụng đến bất cứ đâu và không cần phải quan tâm đến môi trường phát triển, thiếu thư viện, ...</div>
+</td>
+
+</tr>
+</tbody></table>
+<br />
+<br />
+<br />
+Tóm lại, docker:<br />
+<ul>
+<li>Docker rất tốt tại việc xây dựng và chia sẻ Disk Image qua hệ thống Docker Index</li>
+<li>Docker là một phần mềm quản lý cơ sở hạ tầng.</li>
+<li>Docker làm việc tuyệt vời với các công cụ quản lý file config (vd: Chef, Puppet)</li>
+<li>Docker sử dụng btrfs để giảm sát các file hệ thống và có thể được chia sẻ với user khác. (Như cách hoạt động của Git)</li>
+<li>Docker có một bộ kho trung tâm của các Disk Images (có thể được public hoặc private), điều này cho phép bạn dễ dàng chạy trên nhiều hệ điều hành khác nhau (Ubuntu, Centos, Fedora, Gentoo).</li>
+</ul>
+<h2>
+Khi nào thì sử dụng Docker</h2>
+<ul>
+<li>Docker là một công cụ đơn giản, như Git hay Java, mà cho phép bạn kết hợp chặt chẽ tới công việc phát triển hay điều hành hàng ngày của bạn.</li>
+<li>Sử dụng Docker như là một phần mềm quản lý phiên bản (version control system) cho toàn hệ điều hành của bạn.</li>
+<li>Sử dụng Docker khi bạn muốn đóng góp hay hợp tác hệ điều hành của bạn với một nhóm nào đó.</li>
+<li>Sử dụng Docker để chạy những dòng code trên laptop của bạn trong môi trường giống hệt như trên server của bạn.</li>
+<li>Sử dụng Docker khi app của bạn cần trải qua nhiều giai đoạn khác nhau của quá trình phát triển.</li>
+</ul>
+<br />
+Hãy thử dùng và trải nghiệm docker. Mình sẽ liệt kê một số lệnh hay dùng trong Docker<br />
+<h2>
+Các lệnh cơ bản</h2>
+<div>
+<h3>
+Pull một image từ Docker Hub</h3>
+docker pull &lt;image name&gt; <br />
+<h3>
+Tạo một container từ image có sẵn</h3>
+</div>
+<div>
+<pre class="prettyprint"><code>docker run -v &lt;thư mục trên máy tính&gt;:&lt;thư mục trong container&gt; -it &lt;image name&gt; /bin/bash</code></pre>
+<br />
+<br />
+Lệnh trên tạo container, liên kết một thư mục trên máy tính vào bên trong container, và mở bash trong máy đó.<br />
+<br />
+Khi cần phải map cổng đó từ container ra máy tính ngoài, khi đó chúng ta dùng thêm tham số -p như sau:</div>
+<div>
+<pre class="prettyprint"><code>docker run -v /abc:/abc -p 8080:8080 -it ubuntu /bin/bash</code></pre>
+<br />
+Lệnh trên map cổng <span class="label label-success">8080</span> của container ra cổng <span class="label label-success">8080</span> của máy tính hiện tại.<br />
+<h3>
+Liệt kê các images hiện có</h3>
+<pre class="prettyprint"><code>docker images</code></pre>
+<br />
+<br />
+Trong kết quả trả về của lệnh này, chúng ta lưu ý các thông số: <br />
+<ul>
+<li>TAG: là tên của image, ví dụ duyetdev/docker-spark&nbsp;</li>
+<li>IMAGE ID: là ID của image lưu trong hệ thống, ví dụ 91e54dfb1179&nbsp;</li>
+</ul>
+<h3>
+Liệt kê các container đang chạy</h3>
+</div>
+<div>
+<pre class="prettyprint"><code>docker ps
+docker ps -a # liệt kê các container đã tắt
+</code></pre>
+<br />
+<ul>
+<li><b>CONTAINER ID</b>: Là ID của container đó, ví dụ <b>4cc671941ee3&nbsp;</b></li>
+<li><b>NAME</b>: Là tên riêng của container, được tạo ra một cách ngẫu nhiên hoặc có thể tự đặt, ví dụ <b>stupefied_blackwell&nbsp;</b></li>
+</ul>
+<h3>
+Khởi động và truy cập lại vào một container đã tắt</h3>
+Nếu một container đã tắt (không xuất hiện khi dùng lệnh docker ps nữa, chúng ta có thể chạy lệnh docker ps -a để lấy ID hoặc NAME của nó, sau đó dùng lệnh sau để khởi động và truy cập lại vào đó)</div>
+<div>
+<pre class="prettyprint"><code>docker start &lt;ID hoặc NAME&gt;
+docker exec -it &lt;ID hoặc NAME&gt; /bin/bash&nbsp;</code></pre>
+</div>
+<div>
+<h3>
+Xoá một container</h3>
+Nếu một container đã hết giá trị lợi dụng, dù nó đã tắt nhưng nó vẫn chiếm một phần dung lượng trên máy tính, để xoá nó đi, chúng ta dùng lệnh&nbsp;</div>
+<div>
+<pre class="prettyprint"><code>docker rm &lt;ID hoặc NAME&gt;</code></pre>
+<br />
+Nếu container đang chạy, bạn cũng có thể xoá nhưng phải thêm tham số <span class="label label-success">-f</span> vào sau rm để force remove:</div>
+<div>
+<pre class="prettyprint"><code>docker rm -f &lt;ID hoặc NAME&gt;</code></pre>
+<h3>
+Xoá một image</h3>
+Cũng như container, nếu bạn đã ko còn nhu cầu sử dụng một image nào đó nữa, thì nên xoá nó đi. Dùng lệnh rmi</div>
+<div>
+<pre class="prettyprint"><code>docker rmi &lt;ID hoặc NAME&gt;
+# or
+docker rmi -f &lt;ID hoặc NAME&gt;</code></pre>
+<h2>
+Kết</h2>
+<div>
+<div>
+Sự thật là Docker đang dần thay đổi nhiều lập trình viên và đặc biệt là các admin cách làm việc của họ.&nbsp;</div>
+<div>
+Và cộng đồng Docker đang phát triển rất mạnh. Vậy hãy dành chút thời gian và thử dùng Docker và bạn sẽ cảm thấy sự tuyệt vời của Docker qua chính trải nghiệm của mình..</div>
+</div>
+<div>
+<br /></div>
+Có thời gian mình sẽ chia sẻ một số Image docker hay sử dụng.<br />
+Đây là một bài viết về cách deploy Apache Spark, deploy số máy vài chục hoặc vài trăm node chỉ với vài bước đơn giản:&nbsp;<a href="https://blog.duyet.net/2015/12/apache-spark-on-docker.html">https://blog.duyet.net/2015/12/apache-spark-on-docker.html</a><br />
+<br />
+Tham khảo:<br />
+<ul>
+<li>Docker - <a href="http://liink.pw/oHH0G3X" target="_blank">http://docker.io</a></li>
+<li>Docker Solutions and Use Cases -&nbsp;<a href="http://liink.pw/K2ZcK6" target="_blank">http://liink.pw/K2ZcK6</a></li>
+</ul>
+</div>
+</div>
+<div style='clear: both;'></div>
+</div>
+</div>
+<div class='row'>
+<div class='col-xs-12 col-md-4'>
+<h2>Related</h2>
+<div id='hlrpsb'>
+<script src='//cdn.duyet.net/recent-posts.js' style='text/javascript' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script>
+<script style='text/javascript' type="9a4513a2b3d4f8cc32c588f7-text/javascript">var numposts = 5;var showpostdate = false;var showpostsummary = false;var numchars = 100;var standardstyling = false;</script>
+<script src='https://blog.duyet.net/feeds/posts/default?orderby=published&alt=json-in-script&callback=showrecentposts' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script></div>
+<style type='text/css'> 
+/* #hlrpsb a {color: #0B3861; font-size: 13px;} 
+#rpdr, #rpdr a {color:#808080;}
+.bbrecpost2 {
+padding-top:6px;
+padding-bottom:6px;
+border-bottom: 1px #cccccc dotted; } 
+*/
+.mtrpw {
+font-size: 15px;
+}
+.mtrpw a {
+color: #000;
+}
+</style>
+<br/>
+<div class='addthis_toolbox addthis_default_style'>
+<a class='addthis_button_facebook_like' fb:like:layout='button_count'></a>
+<a class='addthis_button_google_plusone' g:plusone:size='normal'></a>
+<a class='addthis_button_tweet'></a>
+</div>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script src='//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e911dd9207371f5' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script>
+<div class='fb-like' data-action='like' data-href='http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html' data-layout='button_count' data-share='true' data-show-faces='true'></div>
+<style>
+  .banner-available-here-link {
+	text-decoration: none;
+}
+.banner-available-here {
+    display: block;
+    background: #09f;
+    height: 100px;
+    width: 100%;
+    color: #FFF;
+    margin: 20px 0;
+    padding: 20px;
+    text-align: center;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+.banner-available-here.near-
+
+ > span {
+    font-size: 2em;
+}
+.banner-available-here.near-footer > span.contact-to {
+    font-size: 1em;
+    display: block;
+    margin-top: 0.5em;
+}</style>
+</div>
+<div class='col-xs-12 col-md-8'>
+<div class='fb-comments' data-href='http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html' data-include-parent='true' data-numposts='5' data-width='100%' migrated='1'></div>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">$(document).ready(function() {
+						var u = $('.fb-comments').attr('data-href');
+						$('.fb-comments').attr('data-href', u.replace('duyet.net', 'duyetdev.com'))
+					})</script>
+<div data-disqus-url='http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html' id='disqus_thread'></div>
+<a name='comments'></a>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'lvduitblogger'; // required: replace example with your forum shortname
+					var disqus_url = 'http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html';
+					var disqus_identifier = 'http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html';
+
+    //  $('.comment-block').click(function(){
+	//		$(this).fadeOut();
+
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+
+
+
+//		});    
+	
+		
+    </script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
+</div>
+</div>
+<div class='comments' id='comments'>
+<div class='addthis_relatedposts_inline'></div>
+<div id='backlinks-container'>
+<div id='Blog1_backlinks-container'>
+</div>
+</div>
+</div>
+</div>
+
+        </div></div>
+      
+<!--Can't find substitution for tag [adEnd]-->
+</div>
+<div class='blog-pager' id='blog-pager'>
+<span id='blog-pager-newer-link'>
+<a class='blog-pager-newer-link' href="https://blog.duyet.net/2015/12/unit-test-va-function-test.html" id='Blog1_blog-pager-newer-link' title='Newer Post'><i class='fa fa-caret-left'></i> Previous</a>
+</span>
+<span id='blog-pager-older-link'>
+<a class='blog-pager-older-link' href="https://blog.duyet.net/2015/12/angular-2-co-gi-moi.html" id='Blog1_blog-pager-older-link' title='Older Post'>Next <i class='fa fa-caret-right'></i></a>
+</span>
+<a class='home-link' href="https://blog.duyet.net/">Home</a>
+</div>
+<div class='clear'></div>
+</div></div>
+</div>
+</div>
+<div class='column-left-outer'>
+<div class='column-left-inner'>
+<aside>
+</aside>
+</div>
+</div>
+<div class='column-right-outer'>
+<div class='column-right-inner'>
+<aside>
+<div class='sidebar no-items section' id='sidebar-right-1'></div>
+<table border='0' cellpadding='0' cellspacing='0' class='section-columns columns-2'>
+<tbody>
+<tr>
+<td class='first columns-cell'>
+<div class='sidebar no-items section' id='sidebar-right-2-1'></div>
+</td>
+<td class='columns-cell'>
+<div class='sidebar no-items section' id='sidebar-right-2-2'></div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class='sidebar no-items section' id='sidebar-right-3'></div>
+</aside>
+</div>
+</div>
+</div>
+<div style='clear: both'></div>
+<!-- columns -->
+</div>
+<!-- main -->
+</div>
+</div>
+<div class='main-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<!-- content -->
+</div>
+</div>
+<div class='content-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</div>
+<section>
+<div class='row justify-content-md-center'>
+<div id='header_top_link' style='display:;'>
+<ul>
+<li class='js' style='background: url(&#39;https://images.unsplash.com/photo-1461988625982-7e46a099bf4f?ixlib=rb-0.3.5…2dbc2b2b52a41993419&dpr=1&auto=format&fit=crop&w=270&h=150&q=60&cs=tinysrgb&#39;)'><a href='https://blog.duyet.net/search/label/javascript'>Javascript/Node.js</a></li>
+<li class='nodejs' style='background-image: url(&#39;https://images.unsplash.com/photo-1502054195739-505158fe7855?ixlib=rb-0.3.5…fdcac2cb4ccf2ebfe90&dpr=1&auto=format&fit=crop&w=270&h=150&q=60&cs=tinysrgb&#39;)'><a href='https://blog.duyet.net/search/label/Python'>Python</a></li>
+<li class='ml' style='background-image: url(&#39;https://images.unsplash.com/photo-1526062316359-870159813355?ixlib=rb-0.3.5&s=a3731f443f7f5546e18b0cefa1b7adcf&dpr=1&auto=format&fit=crop&w=270&h=150&q=60&cs=tinysrgb&#39;)'><a href='https://blog.duyet.net/search/label/Machine Learning'>Machine Learning</a></li>
+</ul>
+</div>
+</div>
+</section>
+<footer style='background: #FBFBFB;'>
+<!-- Tất cả bài viết trên blog này nhằm mục đích chia sẻ kiến thức và ý kiến cá nhân tôi, không đại diện cũng như không phát ngôn cho bất kì tổ chức hay cá nhân nào. <br/><br/> -->
+<p><a href='https://feeds.feedburner.com/duyetdev/blog' rel='alternate' target='_blank' type='application/rss+xml'><img alt='' src='//feedburner.google.com/fb/images/pub/feed-icon16x16.png' style='vertical-align:middle;border:0'/>
+</a><a href='https://feedburner.google.com/fb/a/mailverify?uri=duyetdev/blog&loc=en_US' rel='alternate' target='_blank' type='application/rss+xml'>Đăng ký nhận bài viết mới qua email</a></p>
+<a href='https://github.com/duyetdev' title='Github'>
+<i class='fa fa-github'></i>
+</a>
+<a href='https://bitbucket.org/duyetdev' title='Bitbucket'>
+<i class='fa fa-bitbucket'></i>
+</a>
+<a href='https://vn.linkedin.com/in/duyet'>
+<i class='fa fa-linkedin'></i>
+</a>
+<a href='https://twitter.com/duyetdev'>
+<i class='fa fa-twitter'></i>
+</a>
+<a href='#' onclick="if (!window.__cfRLUnblockHandlers) return false; return prompt(&#39;Bitcoin:&#39;,&#39;1CKGAZv4Um8v4BRuSkeKVatbB9D19NkALW&#39;)" data-cf-modified-9a4513a2b3d4f8cc32c588f7-="">
+<i class='fa fa-btc'></i>
+</a>
+<a class='dmca-badge' href='https://www.dmca.com/Protection/Status.aspx?ID=27d61e66-45a8-4144-aa24-fd0c633e0732' title='DMCA.com Protection Status'>
+<img alt='DMCA.com Protection Status' src='https://images.dmca.com/Badges/dmca_protected_sml_120l.png?ID=27d61e66-45a8-4144-aa24-fd0c633e0732'/></a>
+<br/><br/>
+<span style='color: #ff9112;'>&#10084;</span> by <strong>duyetdev</strong>
+</footer>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+    window.setTimeout(function() {
+        document.body.className = document.body.className.replace('loading', '');
+      }, 10);
+  </script>
+
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript" src="https://www.blogger.com/static/v1/widgets/640298382-widgets.js"></script>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+window['__wavt'] = 'AOuZoY74SLTxRFmgehTC711wd2VBI1OMYA:1556855756825';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d3454518094181460838','//blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html','3454518094181460838');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '3454518094181460838', 'title': 'Tôi là Duyệt', 'url': 'http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html', 'canonicalUrl': 'http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html', 'homepageUrl': 'http://blog.duyet.net/', 'searchUrl': 'http://blog.duyet.net/search', 'canonicalHomepageUrl': 'http://blog.duyet.net/', 'blogspotFaviconUrl': 'http://blog.duyet.net/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': true, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'en', 'localeUnderscoreDelimited': 'en', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Tôi là Duyệt - Atom\x22 href\x3d\x22http://blog.duyet.net/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22Tôi là Duyệt - RSS\x22 href\x3d\x22http://blog.duyet.net/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Tôi là Duyệt - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/3454518094181460838/posts/default\x22 /\x3e\n\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Tôi là Duyệt - Atom\x22 href\x3d\x22http://blog.duyet.net/feeds/3324245740616192311/comments/default\x22 /\x3e\n', 'meTag': '', 'adsenseClientId': 'ca-pub-4424745678749572', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'ieCssRetrofitLinks': '\x3c!--[if IE]\x3e\x3cscript type\x3d\x22text/javascript\x22 src\x3d\x22https://www.blogger.com/static/v1/jsbin/1961721879-ieretrofit.js\x22\x3e\x3c/script\x3e\n\x3c![endif]--\x3e', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/78a598507f5735a0', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Get link', 'key': 'link', 'shareMessage': 'Get link', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Share to Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Share to Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Share to Pinterest', 'target': 'pinterest'}, {'name': 'Email', 'key': 'email', 'shareMessage': 'Email', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27en\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Read more', 'pageType': 'item', 'postId': '3324245740616192311', 'postImageThumbnailUrl': 'https://4.bp.blogspot.com/-_yUdu_nrol8/VnZeC8EMsdI/AAAAAAAAMG0/Qiij482W6lg/s72-c/product%2B-%2Bengine.png', 'postImageUrl': 'https://4.bp.blogspot.com/-_yUdu_nrol8/VnZeC8EMsdI/AAAAAAAAMG0/Qiij482W6lg/s1600/product%2B-%2Bengine.png', 'pageName': 'Docker là gì? Cơ bản về Docker', 'pageTitle': 'Tôi là Duyệt: Docker là gì? Cơ bản về Docker', 'metaDescription': ''}}, {'name': 'features', 'data': {'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Edit', 'linkCopiedToClipboard': 'Link copied to clipboard!', 'ok': 'Ok', 'postLink': 'Post Link'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'Custom', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'Docker là gì? Cơ bản về Docker', 'description': 'I am Data Engineer, Big Data Engineer. Write about latest techniques, Data Engineer, Machine Learning and Web.', 'featuredImage': 'https://4.bp.blogspot.com/-_yUdu_nrol8/VnZeC8EMsdI/AAAAAAAAMG0/Qiij482W6lg/s1600/product%2B-%2Bengine.png', 'url': 'http://blog.duyet.net/2015/12/docker-la-gi-co-ban-ve-docker.html', 'type': 'item', 'isSingleItem': true, 'isMultipleItems': false, 'isError': false, 'isPage': false, 'isPost': true, 'isHomepage': false, 'isArchive': false, 'isLabelSearch': false, 'postId': 3324245740616192311}}]);
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'lightboxEnabled': true, 'lightboxModuleUrl': 'https://www.blogger.com/static/v1/jsbin/1977841774-lbx.js', 'lightboxCssUrl': 'https://www.blogger.com/static/v1/v-css/368954415-lightbox_bundle.css'}, 'displayModeFull'));
+</script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="9a4513a2b3d4f8cc32c588f7-|49" defer=""></script></body>
+<script data-cfasync='false' src='https://www.google.com/jsapi' type='text/javascript'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script>
+<script data-cfasync='false' type='text/javascript'>
+
+       WebFontConfig = {
+          google: {
+            families: ['Google+Sans%3A400,300,500%3Alatin,vietnamese|Open Sans%3A100,600italic,300,600%3Alatin,vietnamese']
+              // Englebert|&subset=
+          }
+       };
+
+       (function(d) {
+          var wf = d.createElement('script'), s = d.scripts[0];
+          wf.src = '//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+          s.parentNode.insertBefore(wf, s);
+       })(document);
+
+    </script>
+<script async='async' src='https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.4/lazysizes-umd.min.js' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+		jQuery('body img').each(function() {
+			$(this).attr('data-src', $(this).attr('src'));
+			$(this).removeAttr ('src');
+			$(this).addClass('lazyload')
+			$(this).attr('alt', $(this).attr('alt') || '')
+		});
+		jQuery('body a[target="_blank"]').attr('rel', 'noopener')
+	</script>
+<script src='https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+    // Tracking header_top_link
+      jQuery(document).ready(function() {
+        jQuery('#header_top_link ul li a').click(function() {
+                console.log('Click to URL', jQuery(this).attr('href'))
+                
+				  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({
+                    'event': 'click_header_topbar_link',
+                    'category': 'BlogTopbar',
+                    'clicked_link': jQuery(this).attr('href')
+                  });
+            })
+        }) 
+    </script>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+      var cb = function() {
+        var l = document.createElement('link'); l.rel = 'stylesheet';
+        l.href = 'https://jmblog.github.io/color-themes-for-google-code-prettify/themes/atelier-savanna-light.min.css';
+        var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+          webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(cb);
+      else window.addEventListener('load', cb);
+    </script>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+  // Ancho h1
+  $(document).ready(function() {
+    $('.post-body').find('h2').each(function(i, h2) {
+        var ancho = $(this).text().replace(/[^A-z0-9_-]+/ig, '');
+        var h = $('<a></a>').html('#').attr('name', ancho).attr('href', '#' + ancho).addClass('duyetdev-h-ancho');
+        $(this).prepend(h);
+    });
+  });
+</script>
+<!-- Quantcast Tag -->
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-k8SFwv-Z5xMSQ"
+});
+</script>
+<noscript>
+<div style='display:none;'>
+<img alt='Quantcast' border='0' height='1' src='//pixel.quantserve.com/pixel/p-k8SFwv-Z5xMSQ.gif' width='1'/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+<!-- <script data-cfasync='false' src='https://duyetdev.github.io/notibar.js/notibar.min.js' type='text/javascript'/> <script data-cfasync='false' type='text/javascript'> var msg = &quot;Since <strong>01/04/2017</strong>, <a href='http://duyetdev.com'>duyetdev.com</a> will be replaced by <a href='https://duyet.net'>duyet.net</a>&quot; notiBar(msg); </script> -->
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+  $(document).ready(function() {
+
+		$('<span></span>').addClass('tombstone').attr('style', 'background-color: #fc0; content: ""; display: inline-block; height: 14px; margin-left: 10px; width: 14px;').insertBefore( $('.post-body.entry-content div[style="clear: both;"]:last-child') )
+
+  })
+</script>
+<script src='https://unpkg.com/quicklink@latest/dist/quicklink.js' type="9a4513a2b3d4f8cc32c588f7-text/javascript"></script>
+<script type="9a4513a2b3d4f8cc32c588f7-text/javascript">
+	// https://github.com/GoogleChromeLabs/quicklink
+	window.addEventListener('load', function () { quicklink(); })
+</script>
+</html>
