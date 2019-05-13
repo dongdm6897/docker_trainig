@@ -33,7 +33,6 @@ class Product
                 name=:name, price=:price, description=:description, category_id=:category_id, created=:created";
 
 
-
         // prepare query
         $stmt = $this->conn->prepare($query);
 
@@ -58,5 +57,72 @@ class Product
 
         return false;
 
+    }
+
+    function showAll()
+    {
+        // query to insert record
+        $query = "SELECT * FROM products ;";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        if ($stmt->execute()) {
+            return $stmt;
+        }
+        return false;
+    }
+
+    function showOne($id){
+        // query to insert record
+        $query = "SELECT * FROM products WHERE id = ". $id .";";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        if ($stmt->execute()) {
+            return $stmt;
+        }
+        return false;
+    }
+
+    function delete($id){
+        $query = "DELETE FROM products WHERE id = ". $id .";";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    function update(){
+        $query = "UPDATE
+                " . $this->table_name . "
+            SET
+                name = :name,
+                price = :price,
+                description = :description,
+                category_id = :category_id
+            WHERE
+                id = :id";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->name=htmlspecialchars(strip_tags($this->name));
+        $this->price=htmlspecialchars(strip_tags($this->price));
+        $this->description=htmlspecialchars(strip_tags($this->description));
+        $this->category_id=htmlspecialchars(strip_tags($this->category_id));
+        $this->id=htmlspecialchars(strip_tags($this->id));
+
+        // bind new values
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':price', $this->price);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':category_id', $this->category_id);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->execute();
+        return $stmt;
     }
 }
